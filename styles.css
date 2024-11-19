@@ -1,0 +1,164 @@
+body {
+    margin: 0;
+    overflow: hidden;
+    font-family: Arial, sans-serif;
+}
+
+.animation-container {
+    position: relative;
+    width: 100vw;
+    height: 100vh;
+    background: linear-gradient(90deg, #2b013b, #4b0161, #683e78);
+    background-size: 300% 300%;
+    animation: gradientShift 6s infinite ease-in-out;
+}
+
+/* Телепорт */
+.teleport {
+    position: absolute;
+    width: 150px;
+    height: 150px;
+}
+
+.teleport img {
+    width: 100%;
+    height: auto;
+}
+
+.dratini-teleport {
+    bottom: 10%;
+    left: 10%;
+}
+
+.flareon-teleport {
+    bottom: 10%;
+    right: 10%;
+}
+
+/* Покемони */
+.pokemon {
+    position: absolute;
+    width: 200px; /* Розмір покемонів */
+    height: 200px;
+    transition: opacity 0.5s ease-out;
+}
+
+.hidden {
+    opacity: 0;
+    pointer-events: none;
+}
+
+.dratini {
+    bottom: 10%;
+    left: 10%;
+    animation: dratiniBounce 2s infinite ease-in-out;
+}
+
+.flareon {
+    bottom: 10%;
+    right: 10%;
+    animation: flareonBounce 2s infinite ease-in-out;
+}
+
+.pokemon img {
+    width: 100%;
+    height: auto;
+}
+
+/* Анімація плавного руху вгору і вниз */
+@keyframes float {
+    0%, 100% {
+        transform: translateY(0);
+    }
+    50% {
+        transform: translateY(-20px);
+    }
+}
+
+/* Покемоны */
+.pokemon {
+    position: absolute;
+    width: 200px; /* Розмір покемонів */
+    height: 200px;
+    transition: opacity 0.5s ease-out;
+    filter: brightness(0.3) hue-rotate(270deg); /* Изначальный фиолетовый оттенок */
+}
+
+.hidden {
+    opacity: 0;
+    pointer-events: none;
+}
+
+.dratini {
+    bottom: 10%;
+    left: 10%;
+    animation: float 3s infinite ease-in-out, dratiniBounce 2s infinite ease-in-out;
+    animation-delay: 1s;
+}
+
+.flareon {
+    bottom: 10%;
+    right: 10%;
+    animation: float 3s infinite ease-in-out, flareonBounce 2s infinite ease-in-out;
+    animation-delay: 1s;
+}
+
+/* Анимация изменения цвета */
+@keyframes colorChange {
+    0% {
+        filter: brightness(0.3) hue-rotate(270deg); /* Фиолетовый */
+    }
+    100% {
+        filter: brightness(1) hue-rotate(0deg); /* Обычный цвет */
+    }
+}
+
+.pokemon.unhidden {
+    animation: colorChange 1s ease-out forwards, float 3s infinite ease-in-out;
+}
+
+/* Новая анимация для дерганья вверх и вниз */
+@keyframes quickBounce {
+    0%, 100% {
+        transform: translateY(0);
+    }
+    50% {
+        transform: translateY(-15px);
+    }
+}
+
+/* Класс для ускоренного движения */
+.pokemon.clicked {
+    animation: quickBounce 0.5s infinite ease-in-out;
+}
+
+/* Анімація фону */
+/* Анімація фону */
+@keyframes gradientShift {
+    0% {
+        background-position: 0% 50%;
+    }
+    50% {
+        background-position: 100% 50%;
+    }
+    100% {
+        background-position: 0% 50%;
+    }
+}
+
+
+/* Діалогове вікно */
+.dialog-box {
+    position: absolute;
+    top: 5%;
+    left: 10%;
+    width: 80%;
+    padding: 20px;
+    background: rgba(0, 0, 0, 0.8);
+    border: 4px solid white;
+    color: white;
+    font-size: 1.2em;
+    font-family: "Press Start 2P", cursive;
+    text-align: center;
+    transition: opacity 0.5s ease-out;
+}
